@@ -3,7 +3,6 @@ package com.pulse.social_graph.controller.grpc;
 import com.pulse.member.grpc.MemberProto;
 import com.pulse.member.grpc.MemberServiceGrpc;
 import com.pulse.social_graph.config.trace.annotation.TraceGrpcClient;
-import com.pulse.social_graph.config.trace.aop.TraceClientAspect;
 import io.grpc.*;
 import io.grpc.stub.MetadataUtils;
 import io.opentelemetry.api.GlobalOpenTelemetry;
@@ -27,7 +26,7 @@ public class GrpcMemberClient {
 
 
     // gRPC 서버에 연결 (생성자)
-    public GrpcMemberClient(TraceClientAspect traceClientAspect) {
+    public GrpcMemberClient() {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
                 .usePlaintext()
                 .build();

@@ -24,7 +24,7 @@ public class GroupPost extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
-    private Group group;           // 그룹
+    private UserGroup userGroup;           // 그룹
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

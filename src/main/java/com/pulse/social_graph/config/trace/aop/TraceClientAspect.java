@@ -25,10 +25,12 @@ public class TraceClientAspect {
      * @param id        - 회원 id
      * @param context   - OpenTelemetry Context
      */
-    @Around(value = "@annotation(com.pulse.social_graph.config.trace.annotation.TraceClient) && args(id, context)", argNames = "joinPoint,id,context")
+    @Around(value = "@annotation(com.pulse.social_graph.config.trace.annotation.TraceGrpcClient) && args(id, context)", argNames = "joinPoint,id,context")
     public Object traceGrpcClient(ProceedingJoinPoint joinPoint, Long id, Context context) throws Throwable {
         // 1. Span 생성
-        Span span = tracer.spanBuilder("grpc-call").setParent(context).startSpan();
+        Span span = tracer.spanBuilder("SocialGraph [grpc] client request")
+                .setParent(context)
+                .startSpan();
 
         // 2. Span을 현재 컨텍스트에 설정
         try (Scope scope = span.makeCurrent()) {

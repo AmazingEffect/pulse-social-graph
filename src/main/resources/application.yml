@@ -1,0 +1,68 @@
+# ?? ??
+server:
+  port: 8083
+
+# ??? ??
+spring:
+  # ?????? ?? ??
+  application:
+    name: social-graph-service
+
+  # ?????? ??
+  datasource:
+    url: jdbc:postgresql://localhost:5432/social-graph
+    username: root
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+
+  # JPA ??
+  jpa:
+    database: POSTGRESQL
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+    # show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 10
+        highlight_sql: true
+
+  # ??? ??
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: redis
+
+  # ??? ??
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
+      group-id: content-group
+    producer:
+      bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
+
+# msa ?? ?? (jaeger)
+otel:
+  resource:
+    attributes:
+      service.name: ${spring.application.name}
+
+tracing:
+  url: http://localhost:4318/v1/traces
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+# gRPC ?? ?? ??
+grpc:
+  server:
+    port: 50053

@@ -18,7 +18,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name = "content_outbox")
+@Table(name = "social_graph_outbox")
 public class SocialGraphOutbox extends BaseEntity {
 
     @Id

@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface OutboxRepository extends JpaRepository<SocialGraphOutbox, Long> {
 
-    Optional<SocialGraphOutbox> findByEventIdAndEventType(Long id, String eventType);
+    Optional<SocialGraphOutbox> findByPayloadAndEventType(Long id, String eventType);
 
 }

@@ -28,8 +28,11 @@ public class SocialGraphOutbox extends BaseEntity {
     @Column(name = "event_type", nullable = false)
     private String eventType;   // 토픽정보 ex.MemberCreatedEvent
 
-    @Column(name = "event_id", nullable = false)
-    private Long eventId;       // 이벤트 내부의 id 필드를 저장. ex) memberId: 1L
+    @Column(name = "payload", nullable = false)
+    private Long payload;       // 이벤트 내부의 id 필드를 저장. ex) memberId: 1L
+
+    @Column(name = "trace_id", nullable = false)
+    private String traceId;     // Kafka 메시지 처리 시, traceId
 
     @Enumerated(EnumType.STRING)
     @Column(name = "message_status", nullable = false)

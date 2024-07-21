@@ -1,4 +1,4 @@
-package com.pulse.social_graph.config.trace.grpc;
+package com.pulse.social_graph.config.grpc.interceptor;
 
 import io.grpc.Context;
 import io.grpc.Metadata;

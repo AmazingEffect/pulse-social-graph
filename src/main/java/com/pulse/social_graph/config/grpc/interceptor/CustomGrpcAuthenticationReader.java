@@ -1,4 +1,4 @@
-package com.pulse.social_graph.config.security.grpc;
+package com.pulse.social_graph.config.grpc.interceptor;
 
 import com.pulse.social_graph.config.jwt.JwtTokenProvider;
 import io.grpc.Metadata;

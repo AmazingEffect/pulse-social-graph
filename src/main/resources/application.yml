@@ -71,3 +71,7 @@ logging:
 grpc:
   server:
     port: 50053
+
+# 전역 예외 처리 설정 (stackTrace)
+app:
+  include-stacktrace: true

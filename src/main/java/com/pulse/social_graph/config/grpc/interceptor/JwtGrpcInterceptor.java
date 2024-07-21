@@ -1,4 +1,4 @@
-package com.pulse.social_graph.config.security.grpc;
+package com.pulse.social_graph.config.grpc.interceptor;
 
 import io.grpc.*;
 import lombok.RequiredArgsConstructor;

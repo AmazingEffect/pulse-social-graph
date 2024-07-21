@@ -1,6 +1,6 @@
 package com.pulse.social_graph.config.trace.aop;
 
-import com.pulse.social_graph.config.trace.grpc.GrpcMetadata;
+import com.pulse.social_graph.config.grpc.interceptor.GrpcMetadata;
 import io.opentelemetry.api.GlobalOpenTelemetry;
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.api.trace.Tracer;

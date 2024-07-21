@@ -1,4 +1,4 @@
-package com.pulse.social_graph.config.trace.grpc;
+package com.pulse.social_graph.config.grpc.interceptor;
 
 import io.grpc.*;
 import io.opentelemetry.api.trace.Span;
@@ -6,14 +6,12 @@ import io.opentelemetry.api.trace.SpanContext;
 import io.opentelemetry.api.trace.TraceFlags;
 import io.opentelemetry.api.trace.TraceState;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 /**
  * gRPC 서버 메서드 호출 시, 요청 헤더에서 traceparent 헤더를 추출하여 SpanContext를 생성합니다.
  * gRPC의 인터셉터 동작이 필요한 경우 지금처럼 ServerInterceptor를 구현합니다.
  */
 @Slf4j
-@Component
 public class GrpcMetadataInterceptor implements ServerInterceptor {
 
     /**

@@ -20,6 +20,7 @@ public enum ErrorCode {
 
     UNEXPECTED_ERROR("SOG999", "Unexpected error"),
     INTERNAL_SERVER_ERROR("SOG500", "Server error"),
+    INVALID_MESSAGE_STATUS("SOG008", "Invalid message status"),
     ;
 
     private final String code;

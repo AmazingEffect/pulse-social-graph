@@ -2,7 +2,7 @@ package com.pulse.social_graph.application.service;
 
 import com.pulse.social_graph.adapter.out.event.outbox.OutboxEvent;
 import com.pulse.social_graph.adapter.out.persistence.entity.constant.MessageStatus;
-import com.pulse.social_graph.application.port.in.SocialGraphOutboxUseCase;
+import com.pulse.social_graph.application.port.in.outbox.SocialGraphOutboxUseCase;
 import com.pulse.social_graph.application.port.out.CreateSocialGraphOutboxPort;
 import com.pulse.social_graph.application.port.out.FindSocialGraphOutboxPort;
 import com.pulse.social_graph.domain.SocialGraphOutbox;

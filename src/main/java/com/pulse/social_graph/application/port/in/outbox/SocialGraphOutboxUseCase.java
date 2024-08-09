@@ -1,4 +1,4 @@
-package com.pulse.social_graph.application.port.in;
+package com.pulse.social_graph.application.port.in.outbox;
 
 import com.pulse.social_graph.adapter.out.event.outbox.OutboxEvent;
 

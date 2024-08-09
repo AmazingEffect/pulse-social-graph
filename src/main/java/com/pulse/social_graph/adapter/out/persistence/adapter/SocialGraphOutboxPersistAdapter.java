@@ -1,4 +1,4 @@
-package com.pulse.social_graph.adapter.out.persistence;
+package com.pulse.social_graph.adapter.out.persistence.adapter;
 
 import com.pulse.social_graph.adapter.out.persistence.repository.SocialGraphOutboxRepository;
 import com.pulse.social_graph.application.port.out.CreateSocialGraphOutboxPort;

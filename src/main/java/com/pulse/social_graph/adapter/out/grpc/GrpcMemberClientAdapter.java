@@ -2,6 +2,7 @@ package com.pulse.social_graph.adapter.out.grpc;
 
 import com.pulse.member.grpc.MemberProto;
 import com.pulse.member.grpc.MemberServiceGrpc;
+import com.pulse.social_graph.application.port.out.grpc.GrpcMemberClientPort;
 import com.pulse.social_graph.config.trace.annotation.TraceGrpcClient;
 import io.grpc.Channel;
 import io.grpc.ClientInterceptors;
@@ -20,22 +21,26 @@ import org.springframework.stereotype.Component;
  * 이 클래스는 애플리케이션 내에서 gRPC 서버에 요청을 보내는 역할을 합니다.
  */
 @Component
-public class GrpcMemberClient {
+public class GrpcMemberClientAdapter implements GrpcMemberClientPort {
 
+    // gRPC 서버에 연결하기 위한 blockingStub
     private final MemberServiceGrpc.MemberServiceBlockingStub blockingStub;
 
-    // gRPC 요청을 위한 TextMapSetter
-    private static final TextMapSetter<Metadata> setter =
-            (carrier, key, value) -> carrier.put(Metadata.Key.of(key, Metadata.ASCII_STRING_MARSHALLER), value);
-
-
     // gRPC 서버에 연결 (생성자)
-    public GrpcMemberClient() {
+    public GrpcMemberClientAdapter() {
+        // NettyChannelBuilder를 사용하여 gRPC 서버에 연결
         ManagedChannel channel = NettyChannelBuilder.forAddress("localhost", 50051)
                 .usePlaintext()
                 .build();
+
+        // blockingStub 생성
         blockingStub = MemberServiceGrpc.newBlockingStub(channel);
     }
+
+    // gRPC 요청에서 사용할 Metadata를 헤더로 추가하는 TextMapSetter
+    private static final TextMapSetter<Metadata> setter =
+            (carrier, key, value) -> carrier.put(Metadata.Key.of(key, Metadata.ASCII_STRING_MARSHALLER), value);
+
 
     /**
      * id로 회원 정보 받아오기

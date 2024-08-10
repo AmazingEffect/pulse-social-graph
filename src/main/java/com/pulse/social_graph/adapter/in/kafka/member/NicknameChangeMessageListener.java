@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pulse.member.grpc.MemberProto;
 import com.pulse.social_graph.adapter.out.event.NicknameChangeEvent;
 import com.pulse.social_graph.adapter.out.event.outbox.OutboxEvent;
-import com.pulse.social_graph.adapter.out.grpc.GrpcMemberClient;
+import com.pulse.social_graph.application.port.out.grpc.GrpcMemberClientPort;
 import io.opentelemetry.context.Context;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 public class NicknameChangeMessageListener {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final GrpcMemberClient grpcMemberClient;
+    private final GrpcMemberClientPort grpcMemberClientPort;
 
     /**
      * 유저가 생성되면 이벤트를 수신하고
@@ -55,7 +55,7 @@ public class NicknameChangeMessageListener {
 
         // 2. gRPC 요청을 보내고 응답 받기
         MemberProto.MemberNicknameResponse result =
-                grpcMemberClient.getNicknameById(event.getPayload(), Context.current());
+                grpcMemberClientPort.getNicknameById(event.getPayload(), Context.current());
         log.info(String.valueOf(result));
 
         // 3. ack 처리

@@ -71,7 +71,7 @@ logging:
 grpc:
   server:
     port: 50053
-
-# 전역 예외 처리 설정 (stackTrace)
-app:
-  include-stacktrace: true
+  client:
+    member-grpc-server: # @GrpcClient에서 사용한 이름과 일치해야 함
+      address: static://localhost:50051  # gRPC 서버 주소와 포트
+      negotiationType: plaintext  # SSL/TLS 없이 평문으로 통신할 경우
